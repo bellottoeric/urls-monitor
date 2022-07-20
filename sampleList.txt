@@ -1,0 +1,13 @@
+[
+    {
+        "axiosConfiguration": {
+            "baseURL": "https://api.ipify.org?format=json",
+            "method": "get",
+            "timeout": 1000
+        },
+        "expectedResponseStatusCode": 200,
+        "alert": ["gmail", "discord"]
+    }
+]
+
+

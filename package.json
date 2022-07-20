@@ -1,0 +1,28 @@
+{
+  "name": "urls-monitor",
+  "version": "1.0.0",
+  "description": "Monitor the status code of urls and be alerted when it changes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bellottoeric/urls-monitor.git"
+  },
+  "keywords": [
+    "urls",
+    "monitor",
+    "alert"
+  ],
+  "author": "Bellotto Eric",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bellottoeric/urls-monitor/issues"
+  },
+  "homepage": "https://github.com/bellottoeric/urls-monitor#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "nodemailer": "^6.7.7"
+  }
+}
