@@ -26,7 +26,16 @@ async function verification() {
                 process.exit(console.log("CHECK FAILED! Content of the path urls list is not a valid array of objects."))
             }
 
-            console.log("VERIFICATION COMPLETED! Start checking URLS...")
+
+            if (config.discordBotToken && !config.discordAlertReceivers && !config.discordAlertChannels) {
+                process.exit(console.log("CHECK FAILED! DIscord is configured but discordAlertReceivers variable and discordAlertChannels variable are not defined."))
+            }
+
+            if (config.gmailUsername && config.gmailPassword && (!config.gmailTo || !config.gmailTo.includes('@'))) {
+                process.exit(console.log("CHECK FAILED! Gmail is configured but gmailTo variable is not correctly defined."))
+            }
+
+            console.log("\nVERIFICATION COMPLETED! Start checking URLS...")
             resolve()
         } catch (e) {
             process.exit(console.log('Error in function', arguments.callee.name, e))

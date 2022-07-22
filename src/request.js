@@ -6,7 +6,7 @@ async function request(param) {
             const instance = axios.create(param.axiosConfiguration);
             await instance.request().then(function (response) {
                 if (param.expectedResponseStatusCode !== response.status) {
-                    reject("Expected " + param.expectedResponseStatusCode + " - Got " + response.status)
+                    reject("Got " + response.status + " - Expected " + param.expectedResponseStatusCode)
                 } else
                     resolve()
             }).catch(function (response) {

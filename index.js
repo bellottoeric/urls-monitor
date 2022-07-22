@@ -1,10 +1,12 @@
+require('dotenv').config()
+
 global.config = require('./config.js').config;
 global.fs = require('fs')
 global.path = require('path')
+global.utils = require('./src/utils.js')
 
 const verification = require('./src/verification.js').verification;
 const request = require('./src/request.js').request;
-const utils = require('./src/utils.js')
 
 const alerts = {}
 alerts.gmail = require('./src/alerts/gmail.js').gmail;
@@ -28,7 +30,7 @@ async function start() {
             }
             for (const i in errors) {
                 console.log("Launch alert " + i + " for " + errors[i].length + " error(s).")
-                alerts[i]()
+                alerts[i](errors[i].join('\n'))
             }
             await utils.wait(config.delaySession * 1000)
             start()

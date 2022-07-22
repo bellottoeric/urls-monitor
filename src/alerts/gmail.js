@@ -1,28 +1,31 @@
 const nodemailer = require("nodemailer");
 
-async function gmail(dest, content) {
+async function gmail(message) {
     return (new Promise(async (resolve, reject) => {
         try {
-            console.log("waow")
-            /*
+            message = message.replace(/\n/g, "<br>")
             let transporter = nodemailer.createTransport({
                 host: 'smtp.gmail.com',
                 port: 587,
-                secure: false, // true for 465, false for other ports
+                secure: false,
                 auth: {
-                    user: process.env, // generated ethereal user
-                    pass: process.env, // generated ethereal password
+                    user: config.gmailUsername,
+                    pass: config.gmailPassword,
                 },
             });
-            
-            exports.wait = waitawait transporter.sendMail({
-                from: process.env, // sender address
-                to: dest, // list of receivers
-                subject: "" + content, // Subject line
-                text: content, // plain text body
-                html: content, // html body
-            });
-            */
+
+            for (let i of config.gmailTo.split(',')) {
+                if (i.length < 2)
+                    continue
+                await transporter.sendMail({
+                    from: config.gmailUsername,
+                    to: i,
+                    subject: config.gmailSubject.replace('|NUMBEROFALERTS|', message.split('\n').length),
+                    text: message,
+                    html: message,
+                });
+            }
+            console.log("Mail(s) correctly sent.")
             resolve()
         } catch (e) {
             console.log('Error in function', arguments.callee.name, e)
@@ -30,4 +33,5 @@ async function gmail(dest, content) {
         }
     }))
 }
+
 exports.gmail = gmail
