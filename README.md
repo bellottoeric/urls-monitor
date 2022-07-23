@@ -193,10 +193,10 @@ You can checkout the default configuration at https://github.com/bellottoeric/ur
 ```sh
    npm start
    ``` 
-The script will start from `index.js` and call the verification process.<br />
-The verification process is in `src/verification.js` and it is called every session of monitoring full URLs.<br />
-Then the query is made from `src/request.js` and return an error if the status code isn't the same as expected.<br />
-For all the errors caught, the linked alert will be triggered. `src/alert/`<br />
+The script will start from `index.js` and call the verification process. <br />
+The verification process is in `src/verification.js` and it is called every session of monitoring full URLs. <br />
+Then the query is made from `src/request.js` and return an error if the status code isn't the same as expected. <br />
+For all the errors caught, the linked alert will be triggered. `src/alert/` <br />
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -224,9 +224,9 @@ See the [open issues](https://github.com/bellottoeric/urls-monitor/issues) for a
 
 Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request.<br />
-You can also simply open an issue with the tag "enhancement".<br />
-Don't forget to give the project a star! Thanks again!<br />
+If you have a suggestion that would make this better, please fork the repo and create a pull request. <br />
+You can also simply open an issue with the tag "enhancement". <br />
+Don't forget to give the project a star! Thanks again! <br />
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
