@@ -130,7 +130,7 @@ https://nodejs.org/en/
 
 5. Edit `.env` Enter your Gmail and Discord credentials
    ```sh
-   discordBotToken="PDnwTzg4NTUwPD34vTg7MEc1.Y1lvVG.mfkSSQ42S0vijTDoTuxgkZCFcZq"
+   discordBotToken="azDnwTzg4NTUwPu34vTg7MEc1.Y1lvVG.mfkSSQ42S0vijTDoTuxgkZCFcZq"
    gmailUsername="mygmailaddresse@gmail.com"
    gmailPassword="myapplicationpassword"
    ``` 
@@ -148,7 +148,7 @@ https://nodejs.org/en/
   
 https://www.writebots.com/discord-bot-token/
 
-<strong>You have to invite the robot on the same server as the targeted user.</strong>
+<strong>You have to invite the robot on the same server as the targeted users and targeted channels.</strong>
 
 
 ### Create Gmail Password Application
@@ -168,6 +168,8 @@ The content of the path URLs file have to be an array of objects containing:
 * alert : (ARRAY) : It must contain "mail" and/or "discord"
 
 ```json
+  [
+    ...
    {
         "axiosConfiguration": {
             "baseURL": "https://api.ipify.org?format=json",
@@ -180,6 +182,8 @@ The content of the path URLs file have to be an array of objects containing:
             "discord"
         ]
     },
+    ...
+  ]
    ``` 
 
 You can checkout the default configuration at https://github.com/bellottoeric/urls-monitor/blob/master/sampleList.txt
@@ -189,10 +193,10 @@ You can checkout the default configuration at https://github.com/bellottoeric/ur
 ```sh
    npm start
    ``` 
-The script will start from `index.js` and call the verification process.
-The verification process is in `src/verification.js` and it is called every session of monitoring full URLs.
-Then the query is made from `src/request.js` and return an error if the status code isn't the same as expected.
-For all the errors caught, the linked alert will be triggered. `src/alert/`
+The script will start from `index.js` and call the verification process.<br />
+The verification process is in `src/verification.js` and it is called every session of monitoring full URLs.<br />
+Then the query is made from `src/request.js` and return an error if the status code isn't the same as expected.<br />
+For all the errors caught, the linked alert will be triggered. `src/alert/`<br />
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -220,8 +224,9 @@ See the [open issues](https://github.com/bellottoeric/urls-monitor/issues) for a
 
 Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+If you have a suggestion that would make this better, please fork the repo and create a pull request.<br />
+You can also simply open an issue with the tag "enhancement".<br />
+Don't forget to give the project a star! Thanks again!<br />
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
