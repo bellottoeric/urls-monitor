@@ -13,18 +13,18 @@
 <br />
 <div align="center">
   <a href="https://github.com/bellottoeric/urls-monitor">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="385" height="165">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">URLs Monitor</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Monitor your URLs and get alerted on Discord and Mail
     <br />
-    <a href="https://github.com/bellottoeric/urls-monitor"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/bellottoeric/urls-monitor#user-content-top"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/bellottoeric/urls-monitor">View Demo</a>
+    <a href="https://github.com/bellottoeric/urls-monitor#user-content-about-the-project">View Demo</a>
     ·
     <a href="https://github.com/bellottoeric/urls-monitor/issues">Report Bug</a>
     ·
@@ -67,16 +67,11 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://github.com/bellottoeric/urls-monitor)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+URLs Monitor is a NodeJS script that monitors URLs from a configuration file.
+The script uses the axios library to make the query and you can customize the headers for your use.
+You can use it to monitor websites and APIs, all of which have http/https addresses.
+When an error occurs, an alert is sent to Discord and/or an email address. 
+You must specify all configuration requirements in the config.js file.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -84,7 +79,8 @@ Use the `BLANK_README.md` to get started.
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+The whole project was coded with NodeJS 16.16.0 and NPM 8.11.0.
+All major libraries are listed below:
 
 * [![Node][Node.js]][Node-url]
 * [![Axios][Axios]][Axios-url]
@@ -98,34 +94,48 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+By following the prerequisites step and the installation step, you will have a working local copy.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+First things first
+
+* NodeJS LTS is needed for running the project.
+
+Download NodeJS
+https://nodejs.org/en/
+  
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+0. Clone the repo && cd && npm i && echo success message
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/bellottoeric/urls-monitor.git && cd urls-monitor && npm install && echo -e '\n\n\n\033[32mSuccessful download! Edit config.js, Create and Edit .env, Edit your URLs list then npm start !\033[0m\n\n\n'
    ```
-3. Install NPM packages
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/bellottoeric/urls-monitor.git
+   ```
+
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+
+3. Enter your settings in `config.js`
+
+4. Create `.env` at the beginning of the project 
+
+5. Edit `.env` Enter your Gmail and Discord credentials
+   ```sh
+   discordBotToken="PDnwTzg4NTUwPD34vTg7MEc1.Y1lvVG.mfkSSQ42S0vijTDoTuxgkZCFcZq"
+   gmailUsername="mygmailaddresse@gmail.com"
+   gmailPassword="myapplicationpassword"
+   ``` 
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -134,9 +144,56 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Create Discord Token
+  
+https://www.writebots.com/discord-bot-token/
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+<strong>You have to invite the robot on the same server as the targeted user.</strong>
+
+
+### Create Gmail Password Application
+  
+https://support.google.com/mail/answer/185833?hl=en
+
+
+
+### Configuration of the URLS
+
+The content of the path URLs file have to be an array of objects containing:
+
+* axiosConfiguration : (ARRAY OF OBJECT) : It is the object passed to the request function. It needs to be a correct Axios configuration object.
+
+* expectedResponseStatusCode : (NUMBER) : It is the status code you are expected from the request. If it is not the same, an alert is triggered.
+
+* alert : (ARRAY) : It must contain "mail" and/or "discord"
+
+```json
+   {
+        "axiosConfiguration": {
+            "baseURL": "https://api.ipify.org?format=json",
+            "method": "get",
+            "timeout": 1000
+        },
+        "expectedResponseStatusCode": 200,
+        "alert": [
+            "mail",
+            "discord"
+        ]
+    },
+   ``` 
+
+You can checkout the default configuration at https://github.com/bellottoeric/urls-monitor/blob/master/sampleList.txt
+
+
+### Execution of the script
+```sh
+   npm start
+   ``` 
+The script will start from `index.js` and call the verification process.
+The verification process is in `src/verification.js` and it is called every session of monitoring full URLs.
+Then the query is made from `src/request.js` and return an error if the status code isn't the same as expected.
+For all the errors caught, the linked alert will be triggered. `src/alert/`
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -145,12 +202,13 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Discord alert
-- [x] Add Gmail alert
+- [x] Add Discord alerts
+- [x] Add Mail alerts
 - [ ] Add a better logs system
 - [ ] Add unit test
-
-
+- [ ] Add delay beetwin alerts
+- [ ] When an URLs trigger an alert, check the URL after some time and alert when the URL get back with the expected status code.
+ 
 See the [open issues](https://github.com/bellottoeric/urls-monitor/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>

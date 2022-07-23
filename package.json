@@ -4,7 +4,8 @@
   "description": "Monitor the status code of urls and be alerted when it changes.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "echo -e \"\\033[33mIf you want to test the project, git clone and use with default configuration. Don't forget to add credentials in .env\\033[0m\" && exit 1"
   },
   "repository": {
     "type": "git",

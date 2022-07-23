@@ -11,10 +11,7 @@ exports.config = {
     delaySession: 1 * 60,
 
     // Path of the file
-    pathUrlsListFile: "sampleList.txt",
-
-    // Alert that will be triggered if no alert is defined on one of the urls.
-    defaultAlert: ['gmail', 'discord'],
+    pathUrlsListFile: "sampleList.json",
 
 
 

@@ -1,6 +1,6 @@
-const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer")
 
-async function gmail(message) {
+async function mail(message) {
     return (new Promise(async (resolve, reject) => {
         try {
             message = message.replace(/\n/g, "<br>")
@@ -12,7 +12,7 @@ async function gmail(message) {
                     user: config.gmailUsername,
                     pass: config.gmailPassword,
                 },
-            });
+            })
 
             for (let i of config.gmailTo.split(',')) {
                 if (i.length < 2)
@@ -23,7 +23,7 @@ async function gmail(message) {
                     subject: config.gmailSubject.replace('|NUMBEROFALERTS|', message.split('\n').length),
                     text: message,
                     html: message,
-                });
+                })
             }
             console.log("Mail(s) correctly sent.")
             resolve()
@@ -34,4 +34,4 @@ async function gmail(message) {
     }))
 }
 
-exports.gmail = gmail
+exports.mail = mail

@@ -1,0 +1,48 @@
+[
+    {
+        "axiosConfiguration": {
+            "baseURL": "https://api.ipify.org?format=json",
+            "method": "get"
+        },
+        "expectedResponseStatusCode": 201,
+        "alert": [
+            "mail",
+            "discord"
+        ]
+    },
+    {
+        "axiosConfiguration": {
+            "baseURL": "https://api.ipify.org?format=json",
+            "method": "get",
+            "timeout": 10
+        },
+        "expectedResponseStatusCode": 200,
+        "alert": [
+            "mail",
+            "discord"
+        ]
+    },
+    {
+        "axiosConfiguration": {
+            "baseURL": "https://api.ipify.org?format=json",
+            "method": "get",
+            "timeout": 1000
+        },
+        "expectedResponseStatusCode": 200,
+        "alert": [
+            "mail",
+            "discord"
+        ]
+    },
+    {
+        "axiosConfiguration": {
+            "baseURL": "https://api.ipify.org/expected404?format=json",
+            "method": "get"
+        },
+        "expectedResponseStatusCode": 404,
+        "alert": [
+            "mail",
+            "discord"
+        ]
+    }
+]

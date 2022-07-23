@@ -1,16 +1,15 @@
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js')
 
 async function discord(message) {
     return (new Promise(async (resolve, reject) => {
         try {
-            const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-
+            const client = new Client({ intents: [GatewayIntentBits.Guilds] })
             client.login(config.discordBotToken)
             client.on('ready', async () => {
                 await sendInPrivateMessage(client, message)
                 await sendToChannels(client, message)
                 console.log("Discord alert(s) correctly sent.")
-                client.destroy();
+                client.destroy()
             })
         } catch (e) {
             console.log('Error in function', arguments.callee.name, e)
@@ -33,7 +32,7 @@ async function sendInPrivateMessage(client, message) {
                     await user.send(utils.getDate() + "\n" + resMessage).catch((error) => {
                         console.log("Error when send discord message", message, error)
                     })
-                });
+                })
             }
             resolve()
         } catch (e) {
